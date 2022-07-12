@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="App.css">
+    <link rel="icon" href="https://play-lh.googleusercontent.com/WQqb62wAATnxR8jGsECCUVluKUc9-5pKaX9IfTZywsG_815L0OHOtxgzFeK5ylD-Obts"/>
+  </head>
+  <body>
+    <h2>Expense Tracker</h2>
+    <h3 style="color:rgb(15, 39, 148)">Your Balance</h3>
+    <h1 style="color:rgb(15, 39, 148)" id="h1Balance">$0</h1>
+    
+    <div class="expence-container">
+      <h3 style="color:green">INCOME <br /> <span id="spanIncome">$0</span> </h3>
+      <h3 style="color:red">EXPENCE <br /><span id="spanExpense">$0</span></h3>
+    </div>
+    
+    <div class="history-container">
+      <h3>History</h3>
+      <hr /><br />
+      <ul class="history-list" id="ulHistoryList">
+      </ul>
+    </div>
+    <div class="transaction-form">
+      <h3>Add New Transaction</h3>
+      <hr />
+        <label>
+            Enter Text: <br />
+        <input type="text" id="txtTitle" placeholder="Text ..."  required />
+        </label>
+        <br />
+        <label>
+            Enter Amount: (use "-" for expence) <br />
+            <input type="number" id="txtAmount" placeholder="e.g: 1234... or -1234..." required />
+        </label>
+
+        <br />
+        <input type="submit" value="Add Transaction" class="btnAddtransaction" onclick="AddTransaction()"/>
+
+        </iframe>
+    </div>
+    <script>
+      let index = 0, balance = 0
+      let income=0, expense=0;
+      
+      function AddTransaction(){
+        let txtTitle = document.getElementById("txtTitle").value;
+        let txtAmount = document.getElementById("txtAmount").value;
+        balance = balance + parseFloat(txtAmount);
+        document.getElementById("h1Balance").textContent = "$" + balance
+        
+        if(txtAmount <= 0){
+          expense = expense + parseFloat(txtAmount);
+          document.getElementById("spanExpense").textContent=""
+          document.getElementById("spanExpense").textContent = "$"+ expense;
+          AppendChild(txtTitle, txtAmount, "red");
+        }
+        else if(txtAmount >= 0){
+          income = income + parseFloat(txtAmount);
+          document.getElementById("spanIncome").textContent = ""
+          document.getElementById("spanIncome").textContent = "$" + income;
+          AppendChild(txtTitle, txtAmount, "green");
+        }
+      }
+      function AppendChild(title, amount, spanColor){
+        
+          let li = document.createElement("li");
+          document.getElementById("ulHistoryList").appendChild(li);
+          li.id = "myli" + index;
+          li.style.borderRight = "3px solid " + spanColor;
+          li.style.borderLeft = "3px solid " + spanColor;
+
+          let spanTitle = document.createElement("span");
+          document.getElementById("myli"+index).appendChild(spanTitle);
+          let spanTitleText = document.createTextNode(title);
+          spanTitle.appendChild(spanTitleText);
+
+
+          let spanAmount = document.createElement("span");
+          document.getElementById("myli"+index).appendChild(spanAmount);
+          let spanAmountText = document.createTextNode(amount);
+          spanAmount.appendChild(spanAmountText);
+          index++;
+      }
+    </script>
+    <script src="./addTransaction.js"></script>
+  </body>
+</html>

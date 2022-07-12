@@ -1,0 +1,51 @@
+.main-container{
+  max-width: 400px;
+  min-height: 450px;
+  margin: 0 auto;
+  background-color: #efefef;
+  box-shadow: 0 0 10px rgb(199, 183, 183);
+  margin-top: 50px;
+  padding: 15px 50px;
+}
+.main-header-text{
+  text-align: center;
+}
+.expence-container{
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  box-shadow: 0 0 10px gray;
+}
+.history-list{
+  margin: 0;
+  padding: 0;
+}
+.dvLists{
+  display: flex;
+  flex-direction: row;
+
+}
+.dvdvLists li{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0 0 5px gray;
+  background-color: #fff;
+  padding: 10px 10px;
+  margin: 15px;
+ width: 20rem;
+  border-radius: 4px;
+}
+.btnDelete{
+  height: 30px;
+  border: transparent;
+  border-radius: 10px;
+}
+.btnDelete:hover{
+  background: rgb(161, 42, 42);
+}
+.transaction-form input{
+  width: 100%;
+  margin: 10px 0;
+  padding: 5px 0;
+}
